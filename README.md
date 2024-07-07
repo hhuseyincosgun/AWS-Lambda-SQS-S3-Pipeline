@@ -3,9 +3,19 @@
 ![image](https://github.com/hhuseyincosgun/AWS-Lambda-SQS-S3-Pipeline/assets/21257660/e184a6cd-59d6-4b7a-a751-5345e00ea4d2)
 
 
-
 This repository contains the code and configuration for an AWS workflow using Lambda, SQS, and S3. The workflow is designed to process messages and store the output as CSV files in an S3 bucket.
 
+The URL is being used to fetch financial data for a specific stock or symbol from the [Mynet Finans](https://finans.mynet.com/borsa/hisseler/) website. Here's a detailed explanation of why and how it is used:
+
+![image](https://github.com/hhuseyincosgun/AWS-Lambda-SQS-and-S3-Workflow/assets/21257660/87c15acb-0c08-438e-916c-0ed847294ad1)
+
+```bash
+body = json.loads(event['Records'][0]['body'])
+symbol = body[0]
+urlpart = body[1]
+
+url = f'https://finans.mynet.com/borsa/hisseler/{urlpart}'
+```
 ### Workflow Steps
 
 1. **Step 1: Lambda Function (Step_1)**
